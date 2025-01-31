@@ -10,23 +10,54 @@ document.querySelector(".masked-phone").innerHTML = maskPhoneNumber("9876587654"
 
 //Countdown for otp resend 
 document.addEventListener("DOMContentLoaded", function () {
-    let countdownElement = document.querySelector(".countdown");
-    let resendButton = document.querySelector(".resend-button");
-    let timeLeft = 37; // Initial countdown time
+    const otpInputs = document.querySelectorAll(".otp-input");
+    const resendButton = document.querySelector(".resend-button");
+    const countdownElement = document.querySelector(".countdown");
 
-    function updateCountdown() {
-        countdownElement.textContent = `(${timeLeft}s)`;
-        if (timeLeft > 0) {
-            timeLeft--;
-            setTimeout(updateCountdown, 1000);
-        } else {
-            resendButton.removeAttribute("disabled");
-            countdownElement.textContent = ""; // Hide countdown when expired
-        }
+    let countdown = 60; // Initial countdown time in seconds
+    let timer; // To store the timer reference
+
+    // Disable resend button initially & start countdown
+    resendButton.disabled = true;
+    startCountdown();
+
+    otpInputs.forEach((input, index, inputs) => {
+        input.addEventListener("input", () => {
+            if (input.value && index < inputs.length - 1) inputs[index + 1].focus();
+        });
+
+        input.addEventListener("keydown", (e) => {
+            if (e.key === "Backspace" && !input.value && index > 0) inputs[index - 1].focus();
+        });
+    });
+
+    function startCountdown() {
+        resendButton.disabled = true; // Keep the button disabled
+        countdownElement.textContent = `(${countdown}s)`;
+
+        timer = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = `(${countdown}s)`;
+
+            if (countdown <= 0) {
+                clearInterval(timer);
+                resendButton.disabled = false; // Enable the button when countdown ends
+                countdownElement.textContent = ""; // Clear countdown text
+            }
+        }, 1000);
     }
 
-    updateCountdown(); // Start countdown
+    // Restart countdown when resend button is clicked
+    resendButton.addEventListener("click", () => {
+        if (!resendButton.disabled) {
+            clearInterval(timer); // Clear previous timer if exists
+            countdown = 60; // Reset countdown
+            startCountdown(); // Restart countdown
+        }
+    });
 });
+
+
 
 // Setup password strength
 function togglePassword(fieldId, iconId) {
@@ -43,6 +74,18 @@ function togglePassword(fieldId, iconId) {
         icon.classList.add("fa-eye");
     }
 }
+
+// Verify Number OTP Filed auto Select
+document.querySelectorAll(".otp-input").forEach((input, index, inputs) => {
+    input.addEventListener("input", () => {
+        if (input.value && index < inputs.length - 1) inputs[index + 1].focus();
+    });
+
+    input.addEventListener("keydown", (e) => {
+        if (e.key === "Backspace" && !input.value && index > 0) inputs[index - 1].focus();
+    });
+});
+
 
 
 
