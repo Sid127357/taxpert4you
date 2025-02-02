@@ -167,7 +167,7 @@
               <a
                 class="nav-link"
                 data-bs-toggle="collapse"
-                href="#servicesMenu"
+                data-bs-target="#servicesMenu"
                 role="button"
                 >Services</a
               >
@@ -177,7 +177,7 @@
                     <a class="nav-link" href="#">Create Service Request</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">View Service Request</a>
+                    <a class="nav-link" href="./view-services.html">View Service Request</a>
                   </li>
                 </ul>
               </div>
@@ -186,18 +186,25 @@
               <a
                 class="nav-link"
                 data-bs-toggle="collapse"
-                href="#notificationMenu"
+                data-bs-target="#notificationMenu"
                 role="button"
-                >Notification</a
+                aria-expanded="false"
+                aria-controls="notificationMenu"
               >
+                Notification
+              </a>
               <div class="collapse" id="notificationMenu">
                 <ul class="nav flex-column submenu">
                   <li class="nav-item">
-                    <a class="nav-link" href="#">All Notifications</a>
+                    <a class="nav-link" href="./notification.html">All Notifications</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="./notification-customization.html">Notifications Customization</a>
                   </li>
                 </ul>
               </div>
             </li>
+            
             <li class="nav-item">
               <a
                 class="nav-link"
@@ -209,7 +216,7 @@
               <div class="collapse" id="feedbackMenu">
                 <ul class="nav flex-column submenu">
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Submit Feedback</a>
+                    <a class="nav-link" href="./feedback.html">Submit Feedback</a>
                   </li>
                 </ul>
               </div>

@@ -164,7 +164,7 @@
               <a
                 class="nav-link"
                 data-bs-toggle="collapse"
-                href="#servicesMenu"
+                data-bs-target="#servicesMenu"
                 role="button"
                 >Services</a
               >
@@ -174,7 +174,9 @@
                     <a class="nav-link" href="#">Create Service Request</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">View Service Request</a>
+                    <a class="nav-link" href="./view-services.html"
+                      >View Service Request</a
+                    >
                   </li>
                 </ul>
               </div>
@@ -183,18 +185,29 @@
               <a
                 class="nav-link"
                 data-bs-toggle="collapse"
-                href="#notificationMenu"
+                data-bs-target="#notificationMenu"
                 role="button"
-                >Notification</a
+                aria-expanded="false"
+                aria-controls="notificationMenu"
               >
+                Notification
+              </a>
               <div class="collapse" id="notificationMenu">
                 <ul class="nav flex-column submenu">
                   <li class="nav-item">
-                    <a class="nav-link" href="#">All Notifications</a>
+                    <a class="nav-link" href="./notification.html"
+                      >All Notifications</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="./notification-customization.html"
+                      >Notifications Customization</a
+                    >
                   </li>
                 </ul>
               </div>
             </li>
+
             <li class="nav-item">
               <a
                 class="nav-link"
@@ -206,7 +219,9 @@
               <div class="collapse" id="feedbackMenu">
                 <ul class="nav flex-column submenu">
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Submit Feedback</a>
+                    <a class="nav-link" href="./feedback.html"
+                      >Submit Feedback</a
+                    >
                   </li>
                 </ul>
               </div>
@@ -235,7 +250,9 @@
           </div>
           <div class="notification-card-block mt-4">
             <ul class="card-wrapper d-flex flex-column gap-3">
-              <li class="notification-card d-flex align-items-center p-3 unread">
+              <li
+                class="notification-card d-flex align-items-center p-3 unread"
+              >
                 <!-- Icon Section -->
                 <div class="icon-box">
                   <i class="fas fa-comments"></i>
@@ -259,7 +276,9 @@
                 <!-- Time and Action Section -->
                 <div class="text-end">
                   <p class="small mb-1 fw-bold">1 June 2024, 10:30PM</p>
-                  <div class="d-flex align-items-center justify-content-end gap-2">
+                  <div
+                    class="d-flex align-items-center justify-content-end gap-2"
+                  >
                     <a href="#" class="text-primary small">Unread</a>
                     <button class="dots-menu">
                       <i class="fa-regular fa-ellipsis"></i>
@@ -267,7 +286,7 @@
                   </div>
                 </div>
               </li>
-              <li class="notification-card d-flex align-items-center p-3 ">
+              <li class="notification-card d-flex align-items-center p-3">
                 <!-- Icon Section -->
                 <div class="icon-box">
                   <i class="fa-sharp fa-light fa-files"></i>
@@ -291,7 +310,9 @@
                 <!-- Time and Action Section -->
                 <div class="text-end">
                   <p class="small mb-1 fw-bold">1 June 2024, 10:30PM</p>
-                  <div class="d-flex align-items-center justify-content-end gap-2">
+                  <div
+                    class="d-flex align-items-center justify-content-end gap-2"
+                  >
                     <a href="#" class="text-primary small">Read</a>
                     <button class="dots-menu">
                       <i class="fa-regular fa-ellipsis"></i>
@@ -299,7 +320,7 @@
                   </div>
                 </div>
               </li>
-              <li class="notification-card d-flex align-items-center p-3 ">
+              <li class="notification-card d-flex align-items-center p-3">
                 <!-- Icon Section -->
                 <div class="icon-box">
                   <i class="fa-sharp fa-light fa-files"></i>
@@ -323,7 +344,9 @@
                 <!-- Time and Action Section -->
                 <div class="text-end">
                   <p class="small mb-1 fw-bold">1 June 2024, 10:30PM</p>
-                  <div class="d-flex align-items-center justify-content-end gap-2">
+                  <div
+                    class="d-flex align-items-center justify-content-end gap-2"
+                  >
                     <a href="#" class="text-primary small">Read</a>
                     <button class="dots-menu">
                       <i class="fa-regular fa-ellipsis"></i>
@@ -331,7 +354,7 @@
                   </div>
                 </div>
               </li>
-              <li class="notification-card d-flex align-items-center p-3 ">
+              <li class="notification-card d-flex align-items-center p-3">
                 <!-- Icon Section -->
                 <div class="icon-box">
                   <i class="fa-sharp fa-light fa-files"></i>
@@ -355,7 +378,9 @@
                 <!-- Time and Action Section -->
                 <div class="text-end">
                   <p class="small mb-1 fw-bold">1 June 2024, 10:30PM</p>
-                  <div class="d-flex align-items-center justify-content-end gap-2">
+                  <div
+                    class="d-flex align-items-center justify-content-end gap-2"
+                  >
                     <a href="#" class="text-primary small">Read</a>
                     <button class="dots-menu">
                       <i class="fa-regular fa-ellipsis"></i>
@@ -365,10 +390,14 @@
               </li>
             </ul>
             <div class="pagination-container text-end mt-5">
-              <span class="page-item"><i class="fa-solid fa-angle-left"></i></span>
+              <span class="page-item"
+                ><i class="fa-solid fa-angle-left"></i
+              ></span>
               <span class="page-item active">1</span>
               <span class="page-item">2</span>
-              <span class="page-item"><i class="fa-solid fa-angle-right"></i></span>
+              <span class="page-item"
+                ><i class="fa-solid fa-angle-right"></i
+              ></span>
             </div>
           </div>
         </main>
@@ -376,8 +405,12 @@
     </main>
     <footer class="footer-block">
       <div class="d-flex justify-content-between align-items-center">
-        <p class="copyright-text">2024 <i class="fa-regular fa-copyright"></i><span> Taxpert4You</span></p>
-        <a class="designed-by" href="https://www.webshark.in/" target="_blank">Designed by Webshark</a>
+        <p class="copyright-text">
+          2024 <i class="fa-regular fa-copyright"></i><span> Taxpert4You</span>
+        </p>
+        <a class="designed-by" href="https://www.webshark.in/" target="_blank"
+          >Designed by Webshark</a
+        >
       </div>
     </footer>
     <!-- Scripts -->
