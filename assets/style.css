@@ -111,6 +111,7 @@ a{text-decoration: none;color: var(--primary-orange);}
 .page-content .filter-button{transition: .3s;background-color: var(--medium-light);color: var(--primary-color);padding: 10px 20px;border-radius: 10px;border: none;}
 .page-content .filter-button:hover{background-color: var(--border-light);}
 .page-content .notification-card {background-color: var(--white);border-radius: 8px;color: var(--secondary-color);border: 1px dashed var(--primary-color);}
+.page-content .notification-card:hover{background-color: #d7ebff;}
 .page-content .notification-card.unread{background-color: #d7ebff;border-radius: 8px;color: var(--secondary-color);border-color: transparent;}
 .page-content .notification-card .icon-box {width: 60px;height: 60px;background-color: var(--primary-color);border-radius: 50%;display: flex;justify-content: center;align-items: center;}
 .page-content .notification-card .icon-box i {color: var(--white);font-size: 22px;}
