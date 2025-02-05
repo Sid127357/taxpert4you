@@ -25,22 +25,25 @@
               class="img-fluid"
           /></a>
         </div>
-        <div class="d-inline-flex gap-1 header-tabs">
+        <div class="d-none d-md-flex gap-1 header-tabs">
           <a href="#" class="btn"
             ><i class="fa-regular fa-chart-column d-block"></i> Case</a
           >
           <a href="#" class="btn"
             ><i class="fa-light fa-grid-2 d-block"></i> Profile</a
           >
-          <a href="#" class="btn"
+          <a href="./view-services.html" class="btn active"
             ><i class="fa-light fa-hourglass d-block"></i> Services</a
           >
-          <a href="#" class="btn active"
+          <a href="#" class="btn"
             ><i class="fa-light fa-gear d-block"></i> Help</a
           >
         </div>
 
         <div class="header_right">
+          <button id="sidebarToggle" class="sidebar-toggle">
+            <i class="fa-solid fa-bars"></i>
+          </button>
           <div class="user_link dropdown">
             <button
               class="btn dropdown-toggle"
@@ -50,7 +53,7 @@
               aria-expanded="false"
             >
               <img src="./assets/img/user-pages/icons/user.png" alt="" />
-              Sathish Kumar
+              <span class="user-name">Sathish Kumar</span>
             </button>
             <ul class="dropdown-menu">
               <li>
@@ -91,29 +94,30 @@
     </header>
     <main class="site_container">
       <section class="page_header container-fluid">
-        <div class="mt-4 d-flex justify-content-between align-items-center">
+        <nav
+          style="
+            --bs-breadcrumb-divider: url(
+              &#34;data:image/svg + xml,
+              %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='%236c757d'/%3E%3C/svg%3E&#34;
+            );
+          "
+          aria-label="breadcrumb"
+          class="py-3"
+        >
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#"><i class="fa-light fa-house"></i></a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              <a href="./notification.html"> Notification</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Notifications Custoization
+            </li>
+          </ol>
+        </nav>
+        <div class="d-flex justify-content-between align-items-center">
           <div class="page-info">
-            <nav
-              style="
-                --bs-breadcrumb-divider: url(
-                  &#34;data:image/svg + xml,
-                  %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='%236c757d'/%3E%3C/svg%3E&#34;
-                );
-              "
-              aria-label="breadcrumb"
-            >
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                  <a href="#"><i class="fa-light fa-house"></i></a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                  <a href="./notification.html"> Notification</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                  Notifications Custoization
-                </li>
-              </ol>
-            </nav>
             <h1 class="page-title">Notification Customization</h1>
           </div>
           <div class="page-right-sec">
@@ -122,7 +126,11 @@
         </div>
       </section>
       <section class="page_flex_container container-fluid">
-        <aside class="primary-border sticky-sidebar">
+        <aside id="sidebar" class="primary-border sticky-sidebar">
+          <button class="close-btn" onclick="closeSidebarMenu()">
+            <i class="fa-solid fa-x"></i>
+          </button>
+
           <h5 class="sidebar-heading">Pages</h5>
           <ul class="nav flex-column main-links">
             <li class="nav-item">
@@ -231,6 +239,11 @@
             </li>
           </ul>
         </aside>
+        <div
+          id="sidebarOverlay"
+          class="sidebar-overlay"
+          onclick="closeSidebarMenu()"
+        ></div>
         <div class="page-content">
           <div class="nt-custm-wrapper">
             <h6 class="mb-4 notification-box">
@@ -468,7 +481,7 @@
                 </div>
               </div>
             </div>
-            <div class="notification-settings mb-4 pb-3 mt-2">
+            <div class="notification-settings mb-md-4 pb-3 mt-2">
               <div
                 class="d-flex justify-content-between align-items-center w-100"
               >

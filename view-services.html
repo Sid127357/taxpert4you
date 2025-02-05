@@ -25,7 +25,7 @@
               class="img-fluid"
           /></a>
         </div>
-        <div class="d-inline-flex gap-1 header-tabs">
+        <div class="d-none d-md-flex gap-1 header-tabs">
           <a href="#" class="btn"
             ><i class="fa-regular fa-chart-column d-block"></i> Case</a
           >
@@ -41,6 +41,9 @@
         </div>
 
         <div class="header_right">
+          <button id="sidebarToggle" class="sidebar-toggle">
+            <i class="fa-solid fa-bars"></i>
+          </button>
           <div class="user_link dropdown">
             <button
               class="btn dropdown-toggle"
@@ -50,7 +53,7 @@
               aria-expanded="false"
             >
               <img src="./assets/img/user-pages/icons/user.png" alt="" />
-              Sathish Kumar
+              <span class="user-name">Sathish Kumar</span>
             </button>
             <ul class="dropdown-menu">
               <li>
@@ -91,29 +94,30 @@
     </header>
     <main class="site_container">
       <section class="page_header container-fluid">
-        <div class="mt-4 d-flex justify-content-between align-items-center">
+        <nav
+          style="
+            --bs-breadcrumb-divider: url(
+              &#34;data:image/svg + xml,
+              %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='%236c757d'/%3E%3C/svg%3E&#34;
+            );
+          "
+          aria-label="breadcrumb"
+          class="py-3"
+        >
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item">
+              <a href="#"><i class="fa-light fa-house"></i></a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              <a href="./view-services.html">Services</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              View Service Request
+            </li>
+          </ol>
+        </nav>
+        <div class="d-flex justify-content-between align-items-center">
           <div class="page-info">
-            <nav
-              style="
-                --bs-breadcrumb-divider: url(
-                  &#34;data:image/svg + xml,
-                  %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='%236c757d'/%3E%3C/svg%3E&#34;
-                );
-              "
-              aria-label="breadcrumb"
-            >
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                  <a href="#"><i class="fa-light fa-house"></i></a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                  <a href="./view-services.html">Services</a> 
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                  View Service Request
-                </li>
-              </ol>
-            </nav>
             <h1 class="page-title">View Service Request</h1>
           </div>
           <div class="page-right-sec">
@@ -125,7 +129,11 @@
         </div>
       </section>
       <section class="page_flex_container container-fluid">
-        <aside class="primary-border sticky-sidebar">
+        <aside id="sidebar" class="primary-border sticky-sidebar">
+          <button class="close-btn" onclick="closeSidebarMenu()">
+            <i class="fa-solid fa-x"></i>
+          </button>
+
           <h5 class="sidebar-heading">Pages</h5>
           <ul class="nav flex-column main-links">
             <li class="nav-item">
@@ -234,6 +242,11 @@
             </li>
           </ul>
         </aside>
+        <div
+          id="sidebarOverlay"
+          class="sidebar-overlay"
+          onclick="closeSidebarMenu()"
+        ></div>
         <main class="page-content view-services">
           <div
             class="d-flex justify-content-between align-items-center top-bar"
@@ -260,162 +273,176 @@
               </button>
             </div>
           </div>
-          <table class="table view-service-tabel">
-            <thead>
-              <tr>
-                <th scope="col">
-                  <input type="checkbox" class="form-check-input" />
-                </th>
-                <th scope="col">Request Title</th>
-                <th scope="col">Category</th>
-                <th scope="col">Sub Category</th>
-                <th scope="col">Comments / Remarks</th>
-                <th scope="col" class="deadline">Deadline</th>
-                <th scope="col">Status</th>
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><input type="checkbox" class="form-check-input" /></td>
-                <td>
-                  Urgent Resolution for GSTR Notice - LGSTO 91 - Bengaluru
-                </td>
-                <td class="category">Tax Compliance</td>
-                <td>GST Notice</td>
-                <td>
-                  Verify turnover and ITC details reported in GSTR-1, GSTR-3B,
-                  and the annual return. Prepare a reconciliation statement and
-                  draft a response for submission by [due date]
-                </td>
-                <td class="date">Jan 25, 2025</td>
-                <td>
-                  <span class="custom-status active text-success">Active</span>
-                </td>
-                <td class="text-end">
-                  <span class="custom-action"
-                    ><i class="fa-regular fa-pen-to-square"></i
-                  ></span>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" class="form-check-input" /></td>
-                <td>
-                  Immediate Assistance for TDS Default Notice - FY 2023-24 -
-                  Delhi
-                </td>
-                <td class="category">Tax Compliance</td>
-                <td>TDS Notice</td>
-                <td>
-                  Please review the attached notice and provide a detailed
-                  analysis of the default along with a resolution plan by
-                  [date]. Ensure timely submission of Form 26Q corrections if
-                  required.
-                </td>
-                <td class="date">Jan 28, 2025</td>
-                <td>
-                  <span class="custom-status active text-success">Active</span>
-                </td>
-                <td class="text-end">
-                  <span class="custom-action"
-                    ><i class="fa-regular fa-pen-to-square"></i
-                  ></span>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" class="form-check-input" /></td>
-                <td>
-                  Urgent Resolution for GSTR Notice - LGSTO 91 - Bengaluru
-                </td>
-                <td class="category">Tax Compliance</td>
-                <td>GST Notice</td>
-                <td>
-                  Verify turnover and ITC details reported in GSTR-1, GSTR-3B,
-                  and the annual return. Prepare a reconciliation statement and
-                  draft a response for submission by [due date]
-                </td>
-                <td class="date">Jan 25, 2025</td>
-                <td>
-                  <span class="custom-status active text-success">Active</span>
-                </td>
-                <td class="text-end">
-                  <span class="custom-action"
-                    ><i class="fa-regular fa-pen-to-square"></i
-                  ></span>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" class="form-check-input" /></td>
-                <td>
-                  Immediate Assistance for TDS Default Notice - FY 2023-24 -
-                  Delhi
-                </td>
-                <td class="category">Tax Compliance</td>
-                <td>TDS Notice</td>
-                <td>
-                  Please review the attached notice and provide a detailed
-                  analysis of the default along with a resolution plan by
-                  [date]. Ensure timely submission of Form 26Q corrections if
-                  required.
-                </td>
-                <td class="date">Jan 28, 2025</td>
-                <td>
-                  <span class="custom-status active text-success">Active</span>
-                </td>
-                <td class="text-end">
-                  <span class="custom-action"
-                    ><i class="fa-regular fa-pen-to-square"></i
-                  ></span>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" class="form-check-input" /></td>
-                <td>
-                  Urgent Resolution for GSTR Notice - LGSTO 91 - Bengaluru
-                </td>
-                <td class="category">Tax Compliance</td>
-                <td>GST Notice</td>
-                <td>
-                  Verify turnover and ITC details reported in GSTR-1, GSTR-3B,
-                  and the annual return. Prepare a reconciliation statement and
-                  draft a response for submission by [due date]
-                </td>
-                <td class="date">Jan 25, 2025</td>
-                <td>
-                  <span class="custom-status active text-success">Active</span>
-                </td>
-                <td class="text-end">
-                  <span class="custom-action"
-                    ><i class="fa-regular fa-pen-to-square"></i
-                  ></span>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" class="form-check-input" /></td>
-                <td>
-                  Immediate Assistance for TDS Default Notice - FY 2023-24 -
-                  Delhi
-                </td>
-                <td class="category">Tax Compliance</td>
-                <td>TDS Notice</td>
-                <td>
-                  Please review the attached notice and provide a detailed
-                  analysis of the default along with a resolution plan by
-                  [date]. Ensure timely submission of Form 26Q corrections if
-                  required.
-                </td>
-                <td class="date">Jan 28, 2025</td>
-                <td>
-                  <span class="custom-status active text-success">Active</span>
-                </td>
-                <td class="text-end">
-                  <span class="custom-action"
-                    ><i class="fa-regular fa-pen-to-square"></i
-                  ></span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-responsive">
+            <table class="table view-service-tabel">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <input type="checkbox" class="form-check-input" />
+                  </th>
+                  <th scope="col">Request Title</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Sub Category</th>
+                  <th scope="col">Comments / Remarks</th>
+                  <th scope="col" class="deadline">Deadline</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="checkbox" class="form-check-input" /></td>
+                  <td>
+                    Urgent Resolution for GSTR Notice - LGSTO 91 - Bengaluru
+                  </td>
+                  <td class="category">Tax Compliance</td>
+                  <td>GST Notice</td>
+                  <td>
+                    Verify turnover and ITC details reported in GSTR-1, GSTR-3B,
+                    and the annual return. Prepare a reconciliation statement
+                    and draft a response for submission by [due date]
+                  </td>
+                  <td class="date">Jan 25, 2025</td>
+                  <td>
+                    <span class="custom-status active text-success"
+                      >Active</span
+                    >
+                  </td>
+                  <td class="text-end">
+                    <span class="custom-action"
+                      ><i class="fa-regular fa-pen-to-square"></i
+                    ></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="form-check-input" /></td>
+                  <td>
+                    Immediate Assistance for TDS Default Notice - FY 2023-24 -
+                    Delhi
+                  </td>
+                  <td class="category">Tax Compliance</td>
+                  <td>TDS Notice</td>
+                  <td>
+                    Please review the attached notice and provide a detailed
+                    analysis of the default along with a resolution plan by
+                    [date]. Ensure timely submission of Form 26Q corrections if
+                    required.
+                  </td>
+                  <td class="date">Jan 28, 2025</td>
+                  <td>
+                    <span class="custom-status active text-success"
+                      >Active</span
+                    >
+                  </td>
+                  <td class="text-end">
+                    <span class="custom-action"
+                      ><i class="fa-regular fa-pen-to-square"></i
+                    ></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="form-check-input" /></td>
+                  <td>
+                    Urgent Resolution for GSTR Notice - LGSTO 91 - Bengaluru
+                  </td>
+                  <td class="category">Tax Compliance</td>
+                  <td>GST Notice</td>
+                  <td>
+                    Verify turnover and ITC details reported in GSTR-1, GSTR-3B,
+                    and the annual return. Prepare a reconciliation statement
+                    and draft a response for submission by [due date]
+                  </td>
+                  <td class="date">Jan 25, 2025</td>
+                  <td>
+                    <span class="custom-status active text-success"
+                      >Active</span
+                    >
+                  </td>
+                  <td class="text-end">
+                    <span class="custom-action"
+                      ><i class="fa-regular fa-pen-to-square"></i
+                    ></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="form-check-input" /></td>
+                  <td>
+                    Immediate Assistance for TDS Default Notice - FY 2023-24 -
+                    Delhi
+                  </td>
+                  <td class="category">Tax Compliance</td>
+                  <td>TDS Notice</td>
+                  <td>
+                    Please review the attached notice and provide a detailed
+                    analysis of the default along with a resolution plan by
+                    [date]. Ensure timely submission of Form 26Q corrections if
+                    required.
+                  </td>
+                  <td class="date">Jan 28, 2025</td>
+                  <td>
+                    <span class="custom-status active text-success"
+                      >Active</span
+                    >
+                  </td>
+                  <td class="text-end">
+                    <span class="custom-action"
+                      ><i class="fa-regular fa-pen-to-square"></i
+                    ></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="form-check-input" /></td>
+                  <td>
+                    Urgent Resolution for GSTR Notice - LGSTO 91 - Bengaluru
+                  </td>
+                  <td class="category">Tax Compliance</td>
+                  <td>GST Notice</td>
+                  <td>
+                    Verify turnover and ITC details reported in GSTR-1, GSTR-3B,
+                    and the annual return. Prepare a reconciliation statement
+                    and draft a response for submission by [due date]
+                  </td>
+                  <td class="date">Jan 25, 2025</td>
+                  <td>
+                    <span class="custom-status active text-success"
+                      >Active</span
+                    >
+                  </td>
+                  <td class="text-end">
+                    <span class="custom-action"
+                      ><i class="fa-regular fa-pen-to-square"></i
+                    ></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="form-check-input" /></td>
+                  <td>
+                    Immediate Assistance for TDS Default Notice - FY 2023-24 -
+                    Delhi
+                  </td>
+                  <td class="category">Tax Compliance</td>
+                  <td>TDS Notice</td>
+                  <td>
+                    Please review the attached notice and provide a detailed
+                    analysis of the default along with a resolution plan by
+                    [date]. Ensure timely submission of Form 26Q corrections if
+                    required.
+                  </td>
+                  <td class="date">Jan 28, 2025</td>
+                  <td>
+                    <span class="custom-status active text-success"
+                      >Active</span
+                    >
+                  </td>
+                  <td class="text-end">
+                    <span class="custom-action"
+                      ><i class="fa-regular fa-pen-to-square"></i
+                    ></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <div class="pagination-container text-end mt-0">
             <span class="page-item"
               ><i class="fa-solid fa-angle-left"></i

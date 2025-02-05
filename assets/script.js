@@ -6,13 +6,21 @@ function maskPhoneNumber(phoneNumber) {
     return `${maskedPart}<span class="visible-digits">${visiblePart}</span>`;
 }
 // Replace with a real phone number dynamically
-document.querySelector(".masked-phone").innerHTML = maskPhoneNumber("9876587654");
+document.addEventListener("DOMContentLoaded", function () {
+    const phoneElement = document.querySelector(".masked-phone");
+
+    if (phoneElement) {
+        phoneElement.innerHTML = maskPhoneNumber("9876587654");
+    }
+});
 
 //Countdown for otp resend 
 document.addEventListener("DOMContentLoaded", function () {
     const otpInputs = document.querySelectorAll(".otp-input");
     const resendButton = document.querySelector(".resend-button");
     const countdownElement = document.querySelector(".countdown");
+
+    if (!resendButton || !countdownElement) return; // Exit if elements are not found
 
     let countdown = 60; // Initial countdown time in seconds
     let timer; // To store the timer reference
@@ -58,7 +66,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
 // Setup password strength
 function togglePassword(fieldId, iconId) {
     let passwordField = document.getElementById(fieldId);
@@ -85,6 +92,49 @@ document.querySelectorAll(".otp-input").forEach((input, index, inputs) => {
         if (e.key === "Backspace" && !input.value && index > 0) inputs[index - 1].focus();
     });
 });
+
+// Navigation bar toggle
+document.addEventListener("DOMContentLoaded", function () {
+    const sidebar = document.getElementById("sidebar");
+    const sidebarToggle = document.getElementById("sidebarToggle");
+    const closeSidebarBtn = document.querySelector(".close-btn"); // Selecting the close button inside the sidebar
+    const sidebarOverlay = document.getElementById("sidebarOverlay");
+
+    function isMobile() {
+        return window.innerWidth <= 768;
+    }
+
+    function toggleSidebar() {
+        if (isMobile()) {
+            sidebar.classList.toggle("active");
+            sidebarOverlay.classList.toggle("active");
+        }
+    }
+
+    function closeSidebarMenu() {
+        sidebar.classList.remove("active");
+        sidebarOverlay.classList.remove("active");
+    }
+
+    // Toggle Sidebar on Button Click
+    sidebarToggle?.addEventListener("click", toggleSidebar);
+
+    // Close Sidebar on Close Button Click
+    closeSidebarBtn?.addEventListener("click", closeSidebarMenu);
+
+    // Close Sidebar When Clicking Outside (Overlay)
+    sidebarOverlay?.addEventListener("click", closeSidebarMenu);
+
+    // Auto-close Sidebar When Resizing to Desktop View
+    window.addEventListener("resize", function () {
+        if (!isMobile()) {
+            closeSidebarMenu();
+        }
+    });
+});
+
+      
+
 
 
 
