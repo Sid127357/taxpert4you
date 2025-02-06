@@ -208,9 +208,9 @@ a{text-decoration: none;color: var(--primary-orange);}
 .my-profile-wrapper .profile-tabs .nav-link.active:after{content: "";height: 3px;width: 100%;background-color: var(--primary-color);position: absolute;bottom: -10px;left: 0;border-radius: 10px;}
 
 .my-profile-wrapper .tab-content{margin-top: 30px;border: 1px solid var(--light-shade);border-radius: 10px;padding: 30px;width: 100%;box-shadow: 0px 5px 4px 0px #dddddd3d;} 
-.my-profile-wrapper .profile-detail .verified-badge{background-color: #18c453;padding: 2px 5px;border-radius: 7px;margin-left: 5px;}
-.my-profile-wrapper .profile-detail .dtl-titles{color: var(--secondary-color);width: 30%;display: inline-block;}
-.my-profile-wrapper .profile-detail .details-box p{margin-bottom: 20px;}
+.my-profile-wrapper .profile-detail .verified-badge{background-color: #18c453;padding: 2px 5px;border-radius: 7px;margin-left: 5px;font-weight: 500;font-size:12px;}
+.my-profile-wrapper .profile-detail .dtl-titles{color: var(--secondary-color);width: 30%;display: inline-block;font-weight: 500;}
+.my-profile-wrapper .profile-detail .details-box p{margin-bottom: 20px;font-weight: 600;}
 .my-profile-wrapper .profile-detail .details-box p:nth-last-child(1){margin-bottom: 0px;}
 
 @media (min-width: 769px) {
