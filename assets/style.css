@@ -151,7 +151,7 @@ a{text-decoration: none;color: var(--primary-orange);}
 .feedback-container .cta_btns{margin: -30px;margin-top: 30px;padding: 20px 30px;}
 .feedback-container .star-rating{font-size: 19px;}
 .feedback-container .star-rating i.active{color: var(--primary-color);}
-.feedback-container .star-rating i{color: var(--border-light);}
+.feedback-container .star-rating i{color: var(--border-light);cursor: pointer;}
 
 /* View Services */
 .view-service-tabel {border-collapse: separate;border-spacing: 0 30px;font-size: 12px;}

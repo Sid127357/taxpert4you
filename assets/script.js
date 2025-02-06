@@ -140,6 +140,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// Star Rating System
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".star-rating").forEach(starContainer => {
+        const stars = starContainer.querySelectorAll("i");
+        
+        stars.forEach((star, index) => {
+            star.addEventListener("click", () => {
+                stars.forEach((s, i) => {
+                    s.classList.toggle("active", i <= index);
+                });
+            });
+        });
+    });
+});
+
 
 
 
