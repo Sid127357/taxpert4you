@@ -1,7 +1,7 @@
 // Auth Mobile number private data masking
 function maskPhoneNumber(phoneNumber) {
     const maskedPart = "*****";
-    const visiblePart = phoneNumber.slice(-5); 
+    const visiblePart = phoneNumber.slice(-5);
 
     return `${maskedPart}<span class="visible-digits">${visiblePart}</span>`;
 }
@@ -66,21 +66,28 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// Setup password strength
-function togglePassword(fieldId, iconId) {
-    let passwordField = document.getElementById(fieldId);
-    let icon = document.getElementById(iconId);
+// Function to set up password toggle functionality for all password fields
+document.addEventListener("DOMContentLoaded", function () {
+    // Select all password toggle elements
+    document.querySelectorAll(".toggle-password").forEach(function (toggleBtn) {
+      toggleBtn.addEventListener("click", function () {
+        let passwordInput = this.previousElementSibling; // Get the input field
+        let icon = this.querySelector("i"); // Get the icon inside span
+        
+        // Toggle password visibility
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          icon.classList.remove("fa-eye");
+          icon.classList.add("fa-eye-slash");
+        } else {
+          passwordInput.type = "password";
+          icon.classList.remove("fa-eye-slash");
+          icon.classList.add("fa-eye");
+        }
+      });
+    });
+  });
 
-    if (passwordField.type === "password") {
-        passwordField.type = "text";
-        icon.classList.remove("fa-eye");
-        icon.classList.add("fa-eye-slash");
-    } else {
-        passwordField.type = "password";
-        icon.classList.remove("fa-eye-slash");
-        icon.classList.add("fa-eye");
-    }
-}
 
 // Verify Number OTP Filed auto Select
 document.querySelectorAll(".otp-input").forEach((input, index, inputs) => {
@@ -133,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-      
+
 
 
 

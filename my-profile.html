@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/fontawesome6/pro/css/all.css" />
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header-block">
+      <div class="container-fluid flex_container">
+        <div class="site_logo">
+          <a class="navbar-brand" href="index.html"
+            ><img
+              src="./assets/img/taxpert4you-logo.png"
+              alt=""
+              class="img-fluid"
+          /></a>
+        </div>
+        <div class="d-none d-md-flex gap-1 header-tabs">
+          <a href="#" class="btn"
+            ><i class="fa-regular fa-chart-column d-block"></i> Case</a
+          >
+          <a href="#" class="btn active"
+            ><i class="fa-light fa-grid-2 d-block"></i> Profile</a
+          >
+          <a href="./view-services.html" class="btn"
+            ><i class="fa-light fa-hourglass d-block"></i> Services</a
+          >
+          <a href="#" class="btn"
+            ><i class="fa-light fa-gear d-block"></i> Help</a
+          >
+        </div>
+
+        <div class="header_right">
+          <button id="sidebarToggle" class="sidebar-toggle">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="user_link dropdown">
+            <button
+              class="btn dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <img src="./assets/img/user-pages/icons/user.png" alt="" />
+              <span class="user-name">Sathish Kumar</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="#"
+                  ><span><i class="fa-regular fa-circle-user"></i></span> Your
+                  Profile</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="#"
+                  ><span><i class="fa-solid fa-file-lines"></i></span> Billing
+                  History</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="#"
+                  ><span><i class="fa-solid fa-key"></i></span> Change
+                  Password</a
+                >
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="#"
+                  ><span><i class="fa-solid fa-circle-question"></i></span>
+                  Help</a
+                >
+              </li>
+              <li><hr class="divider" /></li>
+              <li>
+                <a class="dropdown-item" href="#"
+                  ><i class="fa-solid fa-right-to-bracket"></i> Sign out</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="site_container">
+      <section class="page_header container-fluid">
+        <nav
+          style="
+            --bs-breadcrumb-divider: url(
+              &#34;data:image/svg + xml,
+              %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='%236c757d'/%3E%3C/svg%3E&#34;
+            );
+          "
+          aria-label="breadcrumb"
+          class="pt-3 pb-2 pb-md-0"
+        >
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item">
+              <a href="#"><i class="fa-light fa-house"></i></a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              <a href="./view-services.html">Account</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              My Profile
+            </li>
+          </ol>
+        </nav>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="page-info">
+            <h1 class="page-title">My Profile</h1>
+          </div>
+        </div>
+      </section>
+      <section class="page_flex_container container-fluid">
+        <aside id="sidebar" class="primary-border sticky-sidebar">
+          <button class="close-btn" onclick="closeSidebarMenu()">
+            <i class="fa-solid fa-x"></i>
+          </button>
+
+          <h5 class="sidebar-heading">Pages</h5>
+          <ul class="nav flex-column main-links">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-bs-toggle="collapse"
+                href="#casesMenu"
+                role="button"
+                >Cases</a
+              >
+              <div class="collapse" id="casesMenu">
+                <ul class="nav flex-column submenu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Case 1</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Case 2</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-bs-toggle="collapse"
+                href="#accountMenu"
+                role="button"
+                >Account</a
+              >
+              <div class="collapse" id="accountMenu">
+                <ul class="nav flex-column submenu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Settings</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                data-bs-toggle="collapse"
+                data-bs-target="#servicesMenu"
+                role="button"
+                >Services</a
+              >
+              <div class="collapse show" id="servicesMenu">
+                <ul class="nav flex-column submenu">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="./create-service.html"
+                      >Create Service Request</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="./view-services.html"
+                      >View Service Request</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-bs-toggle="collapse"
+                data-bs-target="#notificationMenu"
+                role="button"
+                aria-expanded="false"
+                aria-controls="notificationMenu"
+              >
+                Notification
+              </a>
+              <div class="collapse" id="notificationMenu">
+                <ul class="nav flex-column submenu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="./notification.html"
+                      >All Notifications</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="./notification-customization.html"
+                      >Notifications Customization</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-bs-toggle="collapse"
+                href="#feedbackMenu"
+                role="button"
+                >Feedback</a
+              >
+              <div class="collapse" id="feedbackMenu">
+                <ul class="nav flex-column submenu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="./feedback.html"
+                      >Submit Feedback</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </aside>
+        <div
+          id="sidebarOverlay"
+          class="sidebar-overlay"
+          onclick="closeSidebarMenu()"
+        ></div>
+        <div class="my-profile-wrapper">
+          <div class="page-content my-profile ms-0">
+            <div class="profile-header d-flex align-items-center">
+              <div class="profile-image position-relative">
+                <img
+                  src="./assets/img/user-pages/user-1.jpg"
+                  alt="Profile Picture"
+                  class="img-fluid h-100 w-100"
+                />
+                <span class="active-dot"></span>
+              </div>
+              <div class="profile-info">
+                <h4 class="profile-name mb-2">
+                  Sathish Kumar
+                  <span class="text-primary"
+                    ><i class="fa-regular fa-badge-check"></i
+                  ></span>
+                </h4>
+                <p class="profile-phone">
+                  <i class="fa-regular fa-mobile"></i> +91 9876543210
+                </p>
+                <p class="profile-location">
+                  <i class="fa-regular fa-location-dot"></i> Bengaluru,
+                  Karnataka
+                </p>
+                <p class="profile-email">
+                  <i class="fa-regular fa-envelope"></i> sathish@company.com
+                </p>
+              </div>
+            </div>
+            <ul
+              class="nav nav-tabs mt-4 profile-tabs"
+              id="profileTabs"
+              role="tablist"
+            >
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="overview-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#overview"
+                  type="button"
+                  role="tab"
+                >
+                  Overview
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="settings-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#settings"
+                  type="button"
+                  role="tab"
+                >
+                  Settings
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="security-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#security"
+                  type="button"
+                  role="tab"
+                >
+                  Security
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="activity-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#activity"
+                  type="button"
+                  role="tab"
+                >
+                  Activity
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="billing-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#billing"
+                  type="button"
+                  role="tab"
+                >
+                  Billing
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="logs-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#logs"
+                  type="button"
+                  role="tab"
+                >
+                  Logs
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div class="tab-content" id="profileTabsContent">
+            <div
+              class="tab-pane fade show active profile-detail"
+              id="overview"
+              role="tabpanel"
+            >
+              <div
+                class="d-flex justify-content-between align-items-center mb-3 border-bottom feedback-title"
+              >
+                <h3 class="page-title mb-0">Profile Details</h3>
+
+                <button class="btn btn-primary">Edit Profile</button>
+              </div>
+              <div class="row details-box">
+                <div class="col-md-12">
+                  <p><span class="dtl-titles">Full Name:</span> Max Smith</p>
+                  <p><span class="dtl-titles">Business Type:</span> Sole Proprietorship</p>
+                  <p><span class="dtl-titles">Organization Name:</span> xyzcopamy</p>
+                  <p><span class="dtl-titles">Email:</span> sathish@company.com</p>
+                  <p>
+                    <span class="dtl-titles"> Contact Phone:</span> +91 7629223223
+                    <span class="verified-badge text-white">Verified</span>
+                  </p>
+                  <p><span class="dtl-titles">Country:</span> India</p>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="settings" role="tabpanel">
+              <h5>Settings</h5>
+              <p>Settings options go here.</p>
+            </div>
+            <div class="tab-pane fade" id="security" role="tabpanel">
+              <h5>Security</h5>
+              <p>Security settings go here.</p>
+            </div>
+            <div class="tab-pane fade" id="activity" role="tabpanel">
+              <h5>Activity</h5>
+              <p>Recent activity log goes here.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer-block">
+      <div class="d-flex justify-content-between align-items-center">
+        <p class="copyright-text">
+          2024 <i class="fa-regular fa-copyright"></i><span> Taxpert4You</span>
+        </p>
+        <a class="designed-by" href="https://www.webshark.in/" target="_blank"
+          >Designed by Webshark</a
+        >
+      </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="./assets/script.js"></script>
+    <!-- <script src="https://kit.fontawesome.com/43e5720ce1.js" crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  </body>
+</html>
