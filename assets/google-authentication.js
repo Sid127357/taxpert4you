@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-analytics.js";
 import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-auth.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyBdbh6W1aws-gxwuduqLZpPEJFr4zck1J0",
   authDomain: "taxpert--sign.firebaseapp.com",
@@ -11,85 +12,118 @@ const firebaseConfig = {
   measurementId: "G-KSM6S1MGVR"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const provider = new GoogleAuthProvider();
-const auth = getAuth();
-auth.languageCode = 'en';
-// Check if we are on a page where login is required
-const googleLogin = document.getElementById('google-login-btn');
+// import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "firebase/auth";
 
-if (googleLogin) {
-  googleLogin.addEventListener('click', () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-        window.location.href = "https://taxpert4you.vercel.app/my-profile.html";;
-      })
-      .catch((error) => {
-        console.error("Login Error:", error);
-      });
-  });
-} else {
-  console.log("Login button not found. Skipping login setup.");
+const auth = getAuth();
+const googleProvider = new GoogleAuthProvider();
+
+// Google Sign-In function
+function signInWithGoogle() {
+  signInWithPopup(auth, googleProvider)
+    .then((result) => {
+      console.log("User signed in with Google:", result.user);
+      // Redirect to my-profile.html after successful sign-in
+      window.location.href = "./my-profile.html";
+    })
+    .catch((error) => {
+      console.error("Error during Google sign-in:", error);
+    });
 }
 
+// Attach event listener to Google sign-in button
+const googleLoginButton = document.getElementById("google-login-btn");
+if (googleLoginButton) {
+  googleLoginButton.addEventListener("click", signInWithGoogle);
+}
 
 function updateProfile(user) {
+  let userName, userPhoto, userEmail, userPhone;
+
   if (user) {
-      const userName = user.displayName || "User"; // Fallback name
-      const userPhoto = user.photoURL || "./assets/img/user-pages/icons/user.png"; // Default profile image
-      const userEmail = user.email || "No email available";
-      const userPhone = user.phoneNumber || "No phone number"; // Phone only available for phone auth
+    // User is logged in
+    userName = user.displayName || "User";
+    userPhoto = user.photoURL || "./assets/img/user-pages/icons/user.png";
+    userEmail = user.email || "No email available";
+    userPhone = user.phoneNumber || "No phone number";
+  } else {
+    // Default Guest Profile for non-logged-in users
+    userName = "Satish Kumar";
+    userPhoto = "../assets/img/user-pages/icons/user.png";
+    userEmail = "satishkumar@gmail.com";
+    userPhone = "+91 7867567667";
+  }
 
-      // Update user details in all matching elements
-      document.querySelectorAll('.user-name').forEach(el => el.innerHTML = userName);
-      document.querySelectorAll('.user-photo').forEach(el => el.src = userPhoto);
-      document.querySelectorAll('.user-email').forEach(el => {
-        el.innerHTML = `<i class="fa-regular fa-envelope"></i> ${userEmail}`;
-    });
-    
-      document.querySelectorAll('.user-phone').forEach(el => el.innerHTML = userPhone);
+  // Update user details
+  document.querySelectorAll('.user-name').forEach(el => el.innerHTML = userName);
+  document.querySelectorAll('.user-photo').forEach(el => el.src = userPhoto);
+  document.querySelectorAll('.user-email').forEach(el => el.innerHTML = `<i class="fa-regular fa-envelope"></i> ${userEmail}`);
+  document.querySelectorAll('.user-phone').forEach(el => el.innerHTML = userPhone);
 
-      fetch("https://ipinfo.io/json?1a9a43e497627e")
+  // Fetch location info (only if user is logged in)
+  if (user) {
+    fetch("https://ipinfo.io/json?1a9a43e497627e")
       .then(response => response.json())
       .then(data => {
-          const userLocation = `${data.city}, ${data.region}, ${data.country}`;
-          document.querySelectorAll('.user-location').forEach(el => el.innerHTML = `<i class="fa-regular fa-location-dot"></i> ${userLocation} `);
+        const userLocation = `${data.city}, ${data.region}, ${data.country}`;
+        document.querySelectorAll('.user-location').forEach(el => el.innerHTML = `<i class="fa-regular fa-location-dot"></i> ${userLocation}`);
       })
       .catch(error => {
-          console.error("Error fetching location:", error);
-          document.querySelectorAll('.user-location').forEach(el => el.innerHTML = "Location unavailable");
+        console.error("Error fetching location:", error);
+        document.querySelectorAll('.user-location').forEach(el => el.innerHTML = "Location unavailable");
       });
+  } else {
+    document.querySelectorAll('.user-location').forEach(el => el.innerHTML = "Unknown Location");
   }
 }
 
 // Sign-out function
+// Sign-out function
 function logoutUser() {
   signOut(auth)
-      .then(() => {
-          console.log("User signed out successfully.");
-          window.location.href = "https://taxpert4you.vercel.app/sign-in.html"; // Redirect to login page
-      })
-      .catch((error) => {
-          console.error("Error signing out:", error);
-      });
+    .then(() => {
+      console.log("User signed out successfully.");
+      // Redirect to home page after sign-out
+      window.location.href = "./index.html";
+    })
+    .catch((error) => {
+      console.error("Error signing out:", error);
+    });
 }
 
 // Attach event listener to sign-out button
-document.getElementById("signout-btn").addEventListener("click", logoutUser);
+const signOutButton = document.getElementById("signout-btn");
+if (signOutButton) {
+  signOutButton.addEventListener("click", logoutUser);
+}
 
 
+// Check authentication state
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    updateProfile(user);
-    const uid = user.uid;
-    return uid;
+    console.log("User is signed in:", user);
+    // Update UI for signed-in user (e.g., show profile link)
+    updateUIForSignedInUser(user);
   } else {
-    console.log('create account');
-    window.location.href = '../sign-up.html';
+    console.log("User is signed out.");
+    // Update UI for signed-out user (e.g., show sign-in button)
+    updateUIForSignedOutUser();
   }
 });
+
+// Update UI for signed-in user
+function updateUIForSignedInUser(user) {
+  const profileLink = document.getElementById("profile-link");
+  if (profileLink) {
+    profileLink.style.display = "block";
+    profileLink.href = "./my-profile.html";
+  }
+}
+
+// Update UI for signed-out user
+function updateUIForSignedOutUser() {
+  const profileLink = document.getElementById("profile-link");
+  if (profileLink) {
+    profileLink.style.display = "none";
+  }
+}
 
