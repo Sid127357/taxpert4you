@@ -6,13 +6,13 @@ function maskPhoneNumber(phoneNumber) {
     return `${maskedPart}<span class="visible-digits">${visiblePart}</span>`;
 }
 // Replace with a real phone number dynamically
-document.addEventListener("DOMContentLoaded", function () {
-    const phoneElement = document.querySelector(".masked-phone");
+// document.addEventListener("DOMContentLoaded", function () {
+//     const phoneElement = document.querySelector(".masked-phone");
 
-    if (phoneElement) {
-        phoneElement.innerHTML = maskPhoneNumber("9876587654");
-    }
-});
+//     if (phoneElement) {
+//         phoneElement.innerHTML = maskPhoneNumber("9876587654");
+//     }
+// });
 
 //Countdown for otp resend 
 document.addEventListener("DOMContentLoaded", function () {
@@ -87,6 +87,9 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
+
+
+
 
 
 // Verify Number OTP Filed auto Select

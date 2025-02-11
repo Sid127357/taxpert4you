@@ -10,7 +10,7 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-   
+
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
@@ -23,30 +23,39 @@
           <p class="auth-welcome desc-primary">Welcome to Taxpert4you</p>
 
           <div class="social-login">
-            <button class="social-button primary-border w-md-50"><img src="./assets/img/auth-icons-bg/google.png" alt="">Sign in with Google</button>
-            <a class="social-button primary-border w-md-50" href="./sign-in.html">
-                <img src="./assets/img/auth-icons-bg/email.png" alt="">
+            <button class="social-button primary-border w-md-50">
+              <img src="./assets/img/auth-icons-bg/google.png" alt="" />Sign in
+              with Google
+            </button>
+            <a
+              class="social-button primary-border w-md-50"
+              href="./sign-in.html"
+            >
+              <img src="./assets/img/auth-icons-bg/email.png" alt="" />
               Sign in with Email
             </a>
           </div>
 
-          <p class="auth-divider position-relative"><span> Or with Phone Number </span></p>
+          <p class="auth-divider position-relative">
+            <span> Or with Phone Number </span>
+          </p>
 
-          <form class="auth-form">
+          <form class="auth-form" id="phoneForm">
             <input
               type="text"
-              class=" primary-border w-100 mb-4"
-              id="exampleFormControlInput1"
+              class="primary-border w-100 mb-4"
+              id="phoneNumber"
               placeholder="Phone Number"
-            />
-
-            <a type="submit" class=" btn btn-primary w-100" href="./verify-number.html">
-              Request a OTP
-            </a>
+              required
+            >
+            <button type="submit" class="btn btn-primary w-100">
+              Request an OTP
+            </button>
           </form>
 
           <p class="auth-footer">
-            Not a member yet? <a href="./sign-up.html" class="auth-link">Sign Up</a>
+            Not a member yet?
+            <a href="./sign-up.html" class="auth-link">Sign Up</a>
           </p>
         </div>
         <!-- Right Side - Logo & Description -->
@@ -56,16 +65,39 @@
           </div>
           <div class="info-box">
             <h3>SIMPLIFYING TAXES, EMPOWERING YOU</h3>
-            <p>Welcome to Taxpert4you - your trusted partner in tax compliance and dispute management. Join us to experience a seamless, user-friendly platform designed to simplify your tax journey. Sign up today and take the first step towards stress-free tax solutions!</p>
+            <p>
+              Welcome to Taxpert4you - your trusted partner in tax compliance
+              and dispute management. Join us to experience a seamless,
+              user-friendly platform designed to simplify your tax journey. Sign
+              up today and take the first step towards stress-free tax
+              solutions!
+            </p>
           </div>
           <div class="side-img">
-            <img src="./assets/img/auth-icons-bg/auth-side-image.png" alt="">
+            <img src="./assets/img/auth-icons-bg/auth-side-image.png" alt="" />
           </div>
         </div>
       </section>
     </main>
     <!-- <footer></footer> -->
     <!-- Scripts -->
+     <!-- Submit Number -->
+    <script>
+      // Add event listener to the form
+      document.getElementById('phoneForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent default form submission
+  
+        // Get the phone number from the input field
+        const phoneNumber = document.getElementById('phoneNumber').value;
+  
+        // Store the phone number in localStorage
+        localStorage.setItem('phoneNumber', phoneNumber);
+  
+        // Redirect to the verify-number.html page
+        window.location.href = './verify-number.html';
+      });
+    </script>
+    <script src="./assets/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   </body>
