@@ -26,7 +26,7 @@ if (googleLogin) {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        window.location.href = '../my-profile.html';
+        window.location.href = "https://taxpert4you.vercel.app/my-profile.html";;
       })
       .catch((error) => {
         console.error("Login Error:", error);
@@ -72,7 +72,7 @@ function logoutUser() {
   signOut(auth)
       .then(() => {
           console.log("User signed out successfully.");
-          window.location.href = "../sign-in.html"; // Redirect to login page
+          window.location.href = "https://taxpert4you.vercel.app/sign-in.html"; // Redirect to login page
       })
       .catch((error) => {
           console.error("Error signing out:", error);
