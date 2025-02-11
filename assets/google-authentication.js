@@ -18,7 +18,7 @@ const provider = new GoogleAuthProvider();
 const auth = getAuth();
 auth.languageCode = 'en';
 // Check if we are on a page where login is required
-const googleLogin = document.querySelector('#google-login-btn');
+const googleLogin = document.getElementById('google-login-btn');
 
 if (googleLogin) {
   googleLogin.addEventListener('click', () => {
