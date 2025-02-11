@@ -39,30 +39,31 @@ if (googleLogin) {
 
 function updateProfile(user) {
   if (user) {
-      const userName = user.displayName || "User"; // Fallback name
-      const userPhoto = user.photoURL || "./assets/img/user-pages/icons/user.png"; // Default profile image
-      const userEmail = user.email || "No email available";
-      const userPhone = user.phoneNumber || "No phone number"; // Phone only available for phone auth
+    const userName = user.displayName || "User"; // Fallback name
+    const userPhoto = user.photoURL || "./assets/img/user-pages/icons/user.png"; // Default profile image
+    const userEmail = user.email || "No email available";
+    const userPhone = user.phoneNumber || "No phone number"; // Phone only available for phone auth
 
-      // Update user details in all matching elements
-      document.querySelectorAll('.user-name').forEach(el => el.innerHTML = userName);
-      document.querySelectorAll('.user-photo').forEach(el => el.src = userPhoto);
-      document.querySelectorAll('.user-email').forEach(el => {
-        el.innerHTML = `<i class="fa-regular fa-envelope"></i> ${userEmail}`;
+    // Update user details in all matching elements
+    document.querySelectorAll('.user-name').forEach(el => el.innerHTML = userName);
+    document.querySelectorAll('.user-photo').forEach(el => el.src = userPhoto);
+    document.querySelectorAll('.user-email').forEach(el => {
+      el.innerHTML = `<a href="mailto:${userEmail}"><i class="fa-regular fa-envelope"></i> ${userEmail}</a>`;
     });
-    
-      document.querySelectorAll('.user-phone').forEach(el => el.innerHTML = userPhone);
 
-      // Fetch user location using IP geolocation
-      fetch("https://ipinfo.io/json?1a9a43e497627e")
+
+    document.querySelectorAll('.user-phone').forEach(el => el.innerHTML = userPhone);
+
+    // Fetch user location using IP geolocation
+    fetch("https://ipinfo.io/json?1a9a43e497627e")
       .then(response => response.json())
       .then(data => {
-          const userLocation = `${data.city}, ${data.region}, ${data.country}`;
-          document.querySelectorAll('.user-location').forEach(el => el.innerHTML = `<i class="fa-regular fa-location-dot"></i> ${userLocation} `);
+        const userLocation = `${data.city}, ${data.region}, ${data.country}`;
+        document.querySelectorAll('.user-location').forEach(el => el.innerHTML = `<i class="fa-regular fa-location-dot"></i> ${userLocation} `);
       })
       .catch(error => {
-          console.error("Error fetching location:", error);
-          document.querySelectorAll('.user-location').forEach(el => el.innerHTML = "Location unavailable");
+        console.error("Error fetching location:", error);
+        document.querySelectorAll('.user-location').forEach(el => el.innerHTML = "Location unavailable");
       });
   }
 }
@@ -70,13 +71,13 @@ function updateProfile(user) {
 // Sign-out function
 function logoutUser() {
   signOut(auth)
-      .then(() => {
-          console.log("User signed out successfully.");
-          window.location.href = "https://taxpert4you.vercel.app/sign-in.html"; // Redirect to login page
-      })
-      .catch((error) => {
-          console.error("Error signing out:", error);
-      });
+    .then(() => {
+      console.log("User signed out successfully.");
+      window.location.href = "https://taxpert4you.vercel.app/sign-in.html"; // Redirect to login page
+    })
+    .catch((error) => {
+      console.error("Error signing out:", error);
+    });
 }
 
 // Attach event listener to sign-out button
