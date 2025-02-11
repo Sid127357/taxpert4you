@@ -53,7 +53,6 @@ function updateProfile(user) {
     
       document.querySelectorAll('.user-phone').forEach(el => el.innerHTML = userPhone);
 
-      // Fetch user location using IP geolocation
       fetch("https://ipinfo.io/json?1a9a43e497627e")
       .then(response => response.json())
       .then(data => {
