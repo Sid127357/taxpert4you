@@ -41,10 +41,10 @@ function updateProfile(user) {
 
   if (user) {
     // User is logged in
-    userName = user.displayName || "User";
-    userPhoto = user.photoURL || "./assets/img/user-pages/icons/user.png";
-    userEmail = user.email || "No email available";
-    userPhone = user.phoneNumber || "No phone number";
+    userName = user.displayName 
+    userPhoto = user.photoURL
+    userEmail = user.email 
+    userPhone = user.phoneNumber 
   } else {
     // Default Guest Profile for non-logged-in users
     userName = "Satish Kumar";
