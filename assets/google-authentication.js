@@ -12,28 +12,28 @@ const firebaseConfig = {
   measurementId: "G-KSM6S1MGVR"
 };
 
-// import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "firebase/auth";
-
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const provider = new GoogleAuthProvider();
 const auth = getAuth();
-const googleProvider = new GoogleAuthProvider();
+auth.languageCode = 'en';
 
-// Google Sign-In function
-function signInWithGoogle() {
-  signInWithPopup(auth, googleProvider)
-    .then((result) => {
-      console.log("User signed in with Google:", result.user);
-      // Redirect to my-profile.html after successful sign-in
-      window.location.href = "./my-profile.html";
-    })
-    .catch((error) => {
-      console.error("Error during Google sign-in:", error);
-    });
-}
+const googleLogin = document.getElementById('google-login-btn');
 
-// Attach event listener to Google sign-in button
-const googleLoginButton = document.getElementById("google-login-btn");
-if (googleLoginButton) {
-  googleLoginButton.addEventListener("click", signInWithGoogle);
+if (googleLogin) {
+  googleLogin.addEventListener('click', () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log("User logged in:", result.user);
+        window.location.href = "https://taxpert4you.vercel.app/my-profile.html";
+      })
+      .catch((error) => {
+        console.error("Login Error:", error);
+      });
+  });
+} else {
+  console.log("Login button not found. Skipping login setup.");
 }
 
 function updateProfile(user) {
@@ -48,7 +48,7 @@ function updateProfile(user) {
   } else {
     // Default Guest Profile for non-logged-in users
     userName = "Satish Kumar";
-    userPhoto = "../assets/img/user-pages/icons/user.png";
+    userPhoto = "../assets/img/user-pages/icons/guest-user.png";
     userEmail = "satishkumar@gmail.com";
     userPhone = "+91 7867567667";
   }
@@ -77,53 +77,24 @@ function updateProfile(user) {
 }
 
 // Sign-out function
-// Sign-out function
 function logoutUser() {
   signOut(auth)
     .then(() => {
       console.log("User signed out successfully.");
-      // Redirect to home page after sign-out
-      window.location.href = "./index.html";
+      updateProfile(null); // Reset to guest profile
     })
     .catch((error) => {
       console.error("Error signing out:", error);
     });
 }
 
-// Attach event listener to sign-out button
+// Attach event listener to sign-out button (if available)
 const signOutButton = document.getElementById("signout-btn");
 if (signOutButton) {
   signOutButton.addEventListener("click", logoutUser);
 }
 
-
 // Check authentication state
 onAuthStateChanged(auth, (user) => {
-  if (user) {
-    console.log("User is signed in:", user);
-    // Update UI for signed-in user (e.g., show profile link)
-    updateUIForSignedInUser(user);
-  } else {
-    console.log("User is signed out.");
-    // Update UI for signed-out user (e.g., show sign-in button)
-    updateUIForSignedOutUser();
-  }
+  updateProfile(user);
 });
-
-// Update UI for signed-in user
-function updateUIForSignedInUser(user) {
-  const profileLink = document.getElementById("profile-link");
-  if (profileLink) {
-    profileLink.style.display = "block";
-    profileLink.href = "./my-profile.html";
-  }
-}
-
-// Update UI for signed-out user
-function updateUIForSignedOutUser() {
-  const profileLink = document.getElementById("profile-link");
-  if (profileLink) {
-    profileLink.style.display = "none";
-  }
-}
-
