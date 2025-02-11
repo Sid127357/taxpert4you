@@ -1,7 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-analytics.js";
 import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-auth.js";
-
 const firebaseConfig = {
   apiKey: "AIzaSyBdbh6W1aws-gxwuduqLZpPEJFr4zck1J0",
   authDomain: "taxpert--sign.firebaseapp.com",
@@ -18,15 +17,16 @@ const analytics = getAnalytics(app);
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
 auth.languageCode = 'en';
-
+// Check if we are on a page where login is required
 const googleLogin = document.getElementById('google-login-btn');
 
 if (googleLogin) {
   googleLogin.addEventListener('click', () => {
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log("User logged in:", result.user);
-        window.location.href = "https://taxpert4you.vercel.app/my-profile.html";
+        const user = result.user;
+        console.log(user);
+        window.location.href = "https://taxpert4you.vercel.app/my-profile.html";;
       })
       .catch((error) => {
         console.error("Login Error:", error);
@@ -36,65 +36,61 @@ if (googleLogin) {
   console.log("Login button not found. Skipping login setup.");
 }
 
+
 function updateProfile(user) {
-  let userName, userPhoto, userEmail, userPhone;
-
   if (user) {
-    // User is logged in
-    userName = user.displayName 
-    userPhoto = user.photoURL
-    userEmail = user.email 
-    userPhone = user.phoneNumber 
-  } else {
-    // Default Guest Profile for non-logged-in users
-    userName = "Satish Kumar";
-    userPhoto = "../assets/img/user-pages/icons/guest-user.png";
-    userEmail = "satishkumar@gmail.com";
-    userPhone = "+91 7867567667";
-  }
+      const userName = user.displayName || "User"; // Fallback name
+      const userPhoto = user.photoURL || "./assets/img/user-pages/icons/user.png"; // Default profile image
+      const userEmail = user.email || "No email available";
+      const userPhone = user.phoneNumber || "No phone number"; // Phone only available for phone auth
 
-  // Update user details
-  document.querySelectorAll('.user-name').forEach(el => el.innerHTML = userName);
-  document.querySelectorAll('.user-photo').forEach(el => el.src = userPhoto);
-  document.querySelectorAll('.user-email').forEach(el => el.innerHTML = `<i class="fa-regular fa-envelope"></i> ${userEmail}`);
-  document.querySelectorAll('.user-phone').forEach(el => el.innerHTML = userPhone);
+      // Update user details in all matching elements
+      document.querySelectorAll('.user-name').forEach(el => el.innerHTML = userName);
+      document.querySelectorAll('.user-photo').forEach(el => el.src = userPhoto);
+      document.querySelectorAll('.user-email').forEach(el => {
+        el.innerHTML = `<i class="fa-regular fa-envelope"></i> ${userEmail}`;
+    });
+    
+      document.querySelectorAll('.user-phone').forEach(el => el.innerHTML = userPhone);
 
-  // Fetch location info (only if user is logged in)
-  if (user) {
-    fetch("https://ipinfo.io/json?1a9a43e497627e")
+      // Fetch user location using IP geolocation
+      fetch("https://ipinfo.io/json?1a9a43e497627e")
       .then(response => response.json())
       .then(data => {
-        const userLocation = `${data.city}, ${data.region}, ${data.country}`;
-        document.querySelectorAll('.user-location').forEach(el => el.innerHTML = `<i class="fa-regular fa-location-dot"></i> ${userLocation}`);
+          const userLocation = `${data.city}, ${data.region}, ${data.country}`;
+          document.querySelectorAll('.user-location').forEach(el => el.innerHTML = `<i class="fa-regular fa-location-dot"></i> ${userLocation} `);
       })
       .catch(error => {
-        console.error("Error fetching location:", error);
-        document.querySelectorAll('.user-location').forEach(el => el.innerHTML = "Location unavailable");
+          console.error("Error fetching location:", error);
+          document.querySelectorAll('.user-location').forEach(el => el.innerHTML = "Location unavailable");
       });
-  } else {
-    document.querySelectorAll('.user-location').forEach(el => el.innerHTML = "Unknown Location");
   }
 }
 
 // Sign-out function
 function logoutUser() {
   signOut(auth)
-    .then(() => {
-      console.log("User signed out successfully.");
-      updateProfile(null); // Reset to guest profile
-    })
-    .catch((error) => {
-      console.error("Error signing out:", error);
-    });
+      .then(() => {
+          console.log("User signed out successfully.");
+          window.location.href = "https://taxpert4you.vercel.app/sign-in.html"; // Redirect to login page
+      })
+      .catch((error) => {
+          console.error("Error signing out:", error);
+      });
 }
 
-// Attach event listener to sign-out button (if available)
-const signOutButton = document.getElementById("signout-btn");
-if (signOutButton) {
-  signOutButton.addEventListener("click", logoutUser);
-}
+// Attach event listener to sign-out button
+document.getElementById("signout-btn").addEventListener("click", logoutUser);
 
-// Check authentication state
+
 onAuthStateChanged(auth, (user) => {
-  updateProfile(user);
+  if (user) {
+    updateProfile(user);
+    const uid = user.uid;
+    return uid;
+  } else {
+    console.log('create account');
+    window.location.href = '../sign-up.html';
+  }
 });
+
