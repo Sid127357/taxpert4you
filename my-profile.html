@@ -10,6 +10,11 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <script
+      src="./assets/google-authentication.js"
+      defer
+      type="module"
+    ></script>
     <link rel="stylesheet" href="./assets/fontawesome6/pro/css/all.css" />
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
@@ -52,8 +57,8 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <img src="./assets/img/user-pages/icons/user.png" alt="" />
-              <span class="user-name">Sathish Kumar</span>
+              <img alt="" class="user-photo" />
+              <span class="user-name"></span>
             </button>
             <ul class="dropdown-menu">
               <li>
@@ -83,7 +88,7 @@
               </li>
               <li><hr class="divider" /></li>
               <li>
-                <a class="dropdown-item" href="#"
+                <a class="dropdown-item" href="#" id="signout-btn"
                   ><i class="fa-solid fa-right-to-bracket"></i> Sign out</a
                 >
               </li>
@@ -160,7 +165,9 @@
               <div class="collapse show" id="accountMenu">
                 <ul class="nav flex-column submenu">
                   <li class="nav-item">
-                    <a class="nav-link active" href="./my-profile.html">My Profile</a>
+                    <a class="nav-link active" href="./my-profile.html"
+                      >My Profile</a
+                    >
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">Settings</a>
@@ -188,7 +195,7 @@
                 role="button"
                 >Services</a
               >
-              <div class="collapse " id="servicesMenu">
+              <div class="collapse" id="servicesMenu">
                 <ul class="nav flex-column submenu">
                   <li class="nav-item">
                     <a class="nav-link" href="./create-service.html"
@@ -260,28 +267,25 @@
             <div class="profile-header d-flex align-items-center">
               <div class="profile-image position-relative">
                 <img
-                  src="./assets/img/user-pages/user-1.jpg"
                   alt="Profile Picture"
-                  class="img-fluid h-100 w-100"
+                  class="img-fluid h-100 w-100 user-photo"
                 />
                 <span class="active-dot"></span>
               </div>
               <div class="profile-info">
-                <h4 class="profile-name mb-2">
-                  Sathish Kumar
+                <h4 class="profile-name mb-2 user-name">
                   <span class="text-primary"
                     ><i class="fa-regular fa-badge-check"></i
                   ></span>
                 </h4>
-                <p class="profile-phone">
+                <p class="profile-phone ">
                   <i class="fa-regular fa-mobile"></i> +91 9876543210
                 </p>
-                <p class="profile-location">
-                  <i class="fa-regular fa-location-dot"></i> Bengaluru,
-                  Karnataka
+                <p class="profile-location user-location">
+                  <i class="fa-regular fa-location-dot"></i> 
                 </p>
-                <p class="profile-email">
-                  <i class="fa-regular fa-envelope"></i> sathish@company.com
+                <p class="profile-emai user-email">
+                
                 </p>
               </div>
             </div>
@@ -380,11 +384,19 @@
               <div class="row details-box">
                 <div class="col-md-12">
                   <p><span class="dtl-titles">Full Name:</span> Max Smith</p>
-                  <p><span class="dtl-titles">Business Type:</span> Sole Proprietorship</p>
-                  <p><span class="dtl-titles">Organization Name:</span> xyzcopamy</p>
-                  <p><span class="dtl-titles">Email:</span> sathish@company.com</p>
                   <p>
-                    <span class="dtl-titles"> Contact Phone:</span> +91 7629223223
+                    <span class="dtl-titles">Business Type:</span> Sole
+                    Proprietorship
+                  </p>
+                  <p>
+                    <span class="dtl-titles">Organization Name:</span> xyzcopamy
+                  </p>
+                  <p>
+                    <span class="dtl-titles">Email:</span> sathish@company.com
+                  </p>
+                  <p>
+                    <span class="dtl-titles"> Contact Phone:</span> +91
+                    7629223223
                     <span class="verified-badge text-white">Verified</span>
                   </p>
                   <p><span class="dtl-titles">Country:</span> India</p>
