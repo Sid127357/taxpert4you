@@ -296,11 +296,19 @@ a{text-decoration: none;color: var(--primary-orange);}
 }
 
 /* View CAse Detail */
-
 .view-case-detail p{font-size: 13px;margin-bottom: 2px;}
 .view-case-detail h2{font-size: 16px;margin-top: 4px;}
 .view-case-detail .attachment-card{background:var(--light-shade);border-radius: 10px;}
 .view-case-detail .top-heading{color: var(--secondary-color);font-weight: 500;}
+
+/* Payment Successful */
+.payment-sucessful-block{display: grid;place-items: center;height: 100vh;}
+.payment-sucessful-block .cstm_container{width: 40%;padding: 30px;margin: 0 auto;}
+.payment-sucessful-block .top-info-sec{text-align: center;}
+.payment-sucessful-block .top-info-sec .success-icon{margin: 0 auto;height: 110px;width: 110px;background:#00c37c15;padding: 30px;border-radius: 50%;}
+.payment-sucessful-block .top-info-sec h1{font-size: 34px;font-weight: 700;margin-top: 20px;}
+
+
 
 
 
@@ -371,6 +379,12 @@ a{text-decoration: none;color: var(--primary-orange);}
     .sidebar-overlay {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.5);visibility: hidden;opacity: 0;transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;z-index: 99;}
     .sidebar-overlay.active {visibility: visible;opacity: 1;}
 
+    .my-profile-wrapper{margin-left: 0px;}
+    .my-profile-wrapper .tab-content{margin-top: 0px;padding: 20px;}
+    .feedback-title{padding: 20px;}
+    .payment-option .card-body{padding: 10px;}
+    .payment-option label{font-size: 12px;color: var(--secondary-color);font-weight: 600;}
+    .my-profile-wrapper .profile-detail .dtl-info{width: 70%;}
 
 }
 

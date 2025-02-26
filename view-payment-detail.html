@@ -243,7 +243,7 @@
               <div
                 class="d-flex justify-content-between align-items-center mb-3 border-bottom feedback-title"
               >
-                <h2>Payment Details</h2>
+                <h2><strong>Payment Details</strong></h2>
                 <a href="" class="btn btn-dark"
                   ><i class="fa-solid fa-arrow-left"></i> Back</a
                 >
@@ -251,18 +251,123 @@
               <div class="row details-box justify-content-between">
                 <div class="col-md-6">
                   <p>
-                    <span class="dtl-titles">Case ID:</span> TAX-XXXX-CAS-XXX
+                    <span class="dtl-titles">Case ID:</span
+                    ><span class="dtl-info"> TAX-XXXX-CAS-XXX</span>
                   </p>
-                  <p><span class="dtl-titles">Title:</span> New Case 2</p>
-                </div>
-                <div class="col-md-5">
-                  <p><span class="dtl-titles">Customer ID:</span> #98674</p>
                   <p>
-                    <span class="dtl-titles">Customer Name:</span> Rakesh Kumar
+                    <span class="dtl-titles">Title:</span
+                    ><span class="dtl-info"> New Case 2</span>
                   </p>
+                  <p>
+                    <span class="dtl-titles">Service:</span
+                    ><span class="dtl-info">
+                      Assessement proceedings: Reply to notice u/s 142(1)</span
+                    >
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <p>
+                    <span class="dtl-titles">Created On:</span
+                    ><span class="dtl-info">Feb 21, 2025</span>
+                  </p>
+                  <p>
+                    <span class="dtl-titles">Deadline:</span
+                    ><span class="dtl-info">Feb 21, 2025</span>
+                  </p>
+                </div>
+                <div class="col-md-12 mt-3 mt-md-5">
+                  <form class="row">
+                    <!-- Full Amount Option -->
+                    <div class="col-md-6">
+                      <div class="card mb-3 payment-option">
+                        <div class="card-body">
+                          <div
+                            class="form-check d-flex justify-content-between"
+                          >
+                            <div>
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="paymentOption"
+                                id="fullAmount"
+                                checked
+                              />
+                              <label class="form-check-label" for="fullAmount">
+                                Pay Full Amount
+                              </label>
+                            </div>
+                            <span class="fw-bold">₹1,250.00</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Minimum Amount Option -->
+                    <div class="col-md-6">
+                      <div class="card mb-3 payment-option">
+                        <div class="card-body">
+                          <div
+                            class="form-check d-flex justify-content-between"
+                          >
+                            <div>
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="paymentOption"
+                                id="minimumAmount"
+                              />
+                              <label
+                                class="form-check-label"
+                                for="minimumAmount"
+                              >
+                                Pay Minimum Amount
+                              </label>
+                            </div>
+                            <span class="fw-bold">₹125.00</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Other Amount Option -->
+                    <div class="col-md-12">
+                      <div class="card mb-3 payment-option">
+                        <div class="card-body">
+                          <div
+                            class="form-check d-flex justify-content-between align-items-center"
+                          >
+                            <div>
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="paymentOption"
+                                id="otherAmount"
+                              />
+                              <label class="form-check-label" for="otherAmount">
+                                Other Amount
+                              </label>
+                            </div>
+                            <div class="input-group" style="max-width: 150px">
+                              <span class="input-group-text">₹</span>
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="0.00"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <button
+                        type="button"
+                        class="btn btn-primary mt-2 mt-md-4 w-auto"
+                      >
+                        Continue to Payment
+                      </button>
+                    </div>
+                  </form>
                 </div>
               </div>
-              <button class="btn btn-primary">Pay Now</button>
             </div>
           </div>
         </div>
