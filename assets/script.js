@@ -87,10 +87,24 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
+// Password Strength Meter
+document.addEventListener("DOMContentLoaded", function() {
+    const strengthClasses = ['weak', 'fair', 'good', 'strong'];
+    const passwordChecks = [
+        pwd => pwd.length >= 8,
+        pwd => /[a-zA-Z]/.test(pwd),
+        pwd => /\d/.test(pwd),
+        pwd => /[!@#$%^&*(),.?":{}|<>]/.test(pwd)
+    ];
 
-
-
-
+    document.querySelector(".password-input").addEventListener("input", function() {
+        const strength = passwordChecks.filter(check => check(this.value)).length;
+        
+        document.querySelectorAll(".strength-bar").forEach((bar, index) => {
+            bar.className = 'strength-bar' + (index < strength ? ` ${strengthClasses[index]}` : '');
+        });
+    });
+});
 
 // Verify Number OTP Filed auto Select
 document.querySelectorAll(".otp-input").forEach((input, index, inputs) => {
@@ -154,6 +168,19 @@ document.addEventListener("DOMContentLoaded", () => {
                     s.classList.toggle("active", i <= index);
                 });
             });
+        });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    let removedFiles = [];
+
+    document.querySelectorAll(".remove-file").forEach(button => {
+        button.addEventListener("click", function () {
+            let fileName = this.getAttribute("data-file");
+            removedFiles.push(fileName);
+            document.getElementById("removedAttachments").value = JSON.stringify(removedFiles);
+            this.parentElement.remove();
         });
     });
 });
